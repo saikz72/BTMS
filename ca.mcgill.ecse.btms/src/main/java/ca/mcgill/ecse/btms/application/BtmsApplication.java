@@ -1,5 +1,7 @@
 package ca.mcgill.ecse.btms.application;
 
+import java.util.Calendar;
+
 import ca.mcgill.ecse.btms.model.*;
 
 public class BtmsApplication {
@@ -19,19 +21,34 @@ public class BtmsApplication {
 		
 		// Step 2
 		// TODO
-		
+		BusVehicle vehicle = new BusVehicle("first-license-plate", false, btms);
+		Route route = new Route(1, btms);
+		Driver driver = new Driver("first-driver", false, btms);
+		btms.addVehicle(vehicle);
+		btms.addRoute(route);
+		btms.addDriver(driver);
 		printBtmsStatistics(btms);
-		
+		BusVehicle bus1 = btms.getVehicle(0);
+		Route route1 = btms.getRoute(0);
+		Driver driver1 = btms.getDriver(0);
 		// Step 3
 		// TODO
 		printBtmsStatistics(btms);
-		
 		// Step 4
 		// TODO
+		BusVehicle bus2 = new BusVehicle("second-license-plate", true, btms);
+		Route route2 = new Route(2, btms);
+		Driver driver2 = new Driver("second-driver", true, btms);
 		printBtmsStatistics(btms);
 		
 		// Step 5
 		// TODO
+		Calendar calender = Calendar.getInstance();
+		java.util.Date currentDate = calender.getTime();
+		java.util.Date date = new java.util.Date(currentDate.getTime());
+		RouteAssignment agmnt1 = new RouteAssignment(date, bus1, route1, btms);
+		RouteAssignment agmnt2 = new RouteAssignment(currentDate, bus2, route2, btms);
+		
 		printBtmsStatistics(btms);
 		
 		// Step 6
